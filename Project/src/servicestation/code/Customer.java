@@ -20,40 +20,7 @@ public class Customer implements Serializable
 		this.vehList=new HashMap<String, Vehicle>();
 		this.lastBalance=0;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Customer other = (Customer) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
-		if (Double.doubleToLongBits(lastBalance) != Double
-				.doubleToLongBits(other.lastBalance))
-			return false;
-		if (mobile == null) {
-			if (other.mobile != null)
-				return false;
-		} else if (!mobile.equals(other.mobile))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (vehList == null) {
-			if (other.vehList != null)
-				return false;
-		} else if (!vehList.equals(other.vehList))
-			return false;
-		return true;
-	}
+	
 	
 	public String getAddress() {
 		return address;
@@ -75,19 +42,7 @@ public class Customer implements Serializable
 	{
 		return this.vehList;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(lastBalance);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((mobile == null) ? 0 : mobile.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((vehList == null) ? 0 : vehList.hashCode());
-		return result;
-	}
+	
 	public void newVehicle(Vehicle v)
 	{
 		this.vehList.put(v.number, v);

@@ -10,9 +10,6 @@ import java.util.Date;
 
 public class Bill implements Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public static final double taxPercent=12.6;
 	private Date billDate;
@@ -51,11 +48,11 @@ public class Bill implements Serializable
 	public void print(OutputStream out)
 	{
 		PrintStream pr=new PrintStream(out);
-		pr.println("*************************************************");
+		pr.println("---------------------------------------------------");
 		pr.println("Date: "+new SimpleDateFormat("dd/mm/yyyy").format(this.billDate));
 		pr.println("Customer Name: "+this.getRequest().getCustomerName());
 		pr.println("Vehicle No.: "+this.getRequest().getVehicleNumber());
-		pr.println("*************************************************");
+		pr.println("---------------------------------------------------");
 		for(Service s:this.getRequest().getServiceList())
 		{
 			if(s instanceof OilService)
@@ -74,13 +71,13 @@ public class Bill implements Serializable
 				pr.println("Sub Total: "+String.format("%.2f", m.price()));
 			}
 		}
-		pr.println("*************************************************");
+		pr.println("---------------------------------------------------");
 		pr.println("Amount: "+String.format("%.2f", computeAmount()));
 		pr.println("Tax: "+String.format("%.2f", computeTax()));
 		pr.println("Total Amount: "+String.format("%.2f", computeTotalBill()));
-		pr.println("Previous Balance: "+String.format("%.2f", ServiceStation.station.findCustomer(getRequest().getCustomerName()).getLastBalance()));
+		
 		pr.println("Final Total: "+String.format("%.2f", (computeTotalBill()+ServiceStation.station.findCustomer(getRequest().getCustomerName()).getLastBalance())));
-		pr.println("*************************************************");
+		pr.println("---------------------------------------------------");
 		
 	}
 	public void setBillDate(Date billDate) {

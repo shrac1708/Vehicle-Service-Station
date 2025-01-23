@@ -10,6 +10,12 @@ import java.util.Scanner;
 
 public class Main implements Serializable
 {
+	
+
+	private static final long serialVersionUID = 1L;
+	
+	public static Scanner sc=new Scanner(System.in);
+	
 	public static void displayCustomerList()
 	{
 		for(Customer c : ServiceStation.station.getCustList())
@@ -201,7 +207,4 @@ public class Main implements Serializable
 		ServiceStation.station.storeCustDetails();
 	}
 	
-	private static final long serialVersionUID = 1L;
-	
-	public static Scanner sc=new Scanner(System.in);
 }

@@ -15,9 +15,7 @@ import java.util.List;
 
 public class ServiceStation implements Serializable
 {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	public static final ServiceStation station=new ServiceStation();
 	public static final String billFilePath="bills.txt";
@@ -38,32 +36,7 @@ public class ServiceStation implements Serializable
 				c+=b.getPaidAmount();
 		return c;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ServiceStation other = (ServiceStation) obj;
-		if (billList == null) {
-			if (other.billList != null)
-				return false;
-		} else if (!billList.equals(other.billList))
-			return false;
-		if (custList == null) {
-			if (other.custList != null)
-				return false;
-		} else if (!custList.equals(other.custList))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
+	
 	public Customer findCustomer(String s)
 	{
 		for(Customer c : this.custList)
@@ -87,18 +60,8 @@ public class ServiceStation implements Serializable
 	{
 		return this.custList;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((billList == null) ? 0 : billList.hashCode());
-		result = prime * result
-				+ ((custList == null) ? 0 : custList.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings("resource")
 	public void loadBillDetails() throws IOException, ClassNotFoundException
 	{
 		FileInputStream fis=null;

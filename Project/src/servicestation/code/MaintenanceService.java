@@ -6,9 +6,7 @@ import java.util.LinkedList;
 
 public class MaintenanceService extends Service implements Serializable 
 {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private LinkedList<SparePart> partList;
 	private double laborCharges;
