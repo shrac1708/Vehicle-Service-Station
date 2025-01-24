@@ -1,34 +1,55 @@
 package servicestation.code;
 
-import java.io.Serializable;
+import java.util.Scanner;
 
-public class SparePart implements Serializable
-{
-	private static final long serialVersionUID = 1L;
-	public String desc;
-	public double rate;
-	public SparePart(String desc, double rate) {
-		super();
-		this.desc = desc;
-		this.rate = rate;
+public class SparePart {
+
+	private String Description;
+	private double rate;
+	
+	public  SparePart() {
+		
 	}
 	
-	public String getDesc() {
-		return desc;
+	public SparePart(String description, double rate) {
+		super();
+		this.Description = description;
+		this.rate = rate;
 	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
+	}
+
 	public double getRate() {
 		return rate;
 	}
-	
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+
 	public void setRate(double rate) {
 		this.rate = rate;
 	}
 	
-	@Override
-	public String toString() {
-		return "SparePart [desc=" + desc + ", rate=" + rate + "]";
+	public void input() {
+		    Scanner sc = new Scanner(System.in);
+	        System.out.print("Enter part description: ");
+	        this.Description = sc.nextLine();
+	        System.out.print("Enter part rate: ");
+	        this.rate = sc.nextDouble();
 	}
+	
+	 public void display() {
+	        System.out.println("Part Description: " + Description );
+	        System.out.println("Part Rate: " + rate);
+	    }
+
+	
+	
+	
+	
+	
+	
 }

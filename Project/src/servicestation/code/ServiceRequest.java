@@ -1,55 +1,85 @@
 package servicestation.code;
 
-
-import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.Scanner;
 
-public class ServiceRequest implements Serializable
-{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private LinkedList<Service> serviceList;
-	private String customerName;
-	private String vehicleNumber;
-	public ServiceRequest() {
-		serviceList=new LinkedList<Service>();
-	}
-	public ServiceRequest(String customerName, String vehicleNumber) {
+public class ServiceRequest {
+   
+	private String cust_name;
+	private Vehicle vehicle;
+	   
+	LinkedList<Service> linkservice = new LinkedList<>();
+      
+	public ServiceRequest(String cust_name, Vehicle vehicle ) {
+		
 		super();
-		serviceList=new LinkedList<Service>();
-		this.customerName = customerName;
-		this.vehicleNumber = vehicleNumber;
+		         
+		this.cust_name = cust_name;
+		this.vehicle = vehicle;
+		this.linkservice = linkservice;
+		
+	}
+       
+	public String getCust_name() {
+		return cust_name;
+	}
+     
+	public void setCust_name(String cust_name) {
+		this.cust_name = cust_name;
+	}
+     
+	
+      
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+
+	public LinkedList<Service> getLinkservice() {
+		return linkservice;
+	}
+     
+	public void setLinkservice(LinkedList<Service> linkservice) {
+		this.linkservice = linkservice;
 	}
 	
-	public String getCustomerName() {
-		return customerName;
-	}
-	public LinkedList<Service> getServiceList() {
-		return serviceList;
-	}
-	public String getVehicleNumber() {
-		return vehicleNumber;
+	public void add_item(Service servicing) {
+		linkservice.add(servicing);
+		 
 	}
 	
-	public void newService(Service s)
-	{
-		this.serviceList.add(s);
+	public double calculateTotal() {
+	    double totalCost = 0.0;
+	    for (Service service : linkservice) {
+	        totalCost += service.price(); // Add the cost of each service
+	    }
+	    return totalCost;
 	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-	public void setServiceList(LinkedList<Service> serviceList) {
-		this.serviceList = serviceList;
-	}
+
 	
-	public void setVehicleNumber(String vehicleNumber) {
-		this.vehicleNumber = vehicleNumber;
-	}
-	@Override
-	public String toString() {
-		return "ServiceRequest [serviceList=" + serviceList + ", customerName="
-				+ customerName + ", vehicleNumber=" + vehicleNumber + "]";
-	}
+	public void displayRequest() {
+        System.out.println("Customer Name: " + cust_name);
+        System.out.println("Vehicle Details: " + vehicle); 
+     
+        if (linkservice.isEmpty()) {
+            System.out.println("No services added yet.");
+        } else {
+            for (Service service : linkservice) {
+                System.out.println(service.getDescription());
+            }
+        }
+
+        System.out.println("\nTotal Cost of Services: " + calculateTotal());
+    }
+	
+	
+	
+	 
+	
+	
+	
+	
 }

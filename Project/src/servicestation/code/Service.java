@@ -1,32 +1,43 @@
 package servicestation.code;
 
+import java.util.Scanner;
 
-import java.io.Serializable;
+abstract class Service {
+	
+	public  String Description;
+	
 
-abstract public class Service implements Serializable
-{
-	
-	private static final long serialVersionUID = 1L;
-	public String desc;
-	
-	public String getDesc() {
-		return desc;
+	public Service(){
+		super();
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((desc == null) ? 0 : desc.hashCode());
-		return result;
+	
+	public Service(String description) {
+		super();
+		Description = Description;
 	}
+	
+	
+
+	public String getDescription() {
+		return Description;
+	}
+
+
+
+	public void setDescription(String description) {
+		Description = Description;
+	}
+
+	
+	
+	public void display() {
+		System.out.println("description: " +getDescription());
+	}
+	
+	
+	public abstract void input();
+	
 	
 	public abstract double price();
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	@Override
-	public String toString() {
-		return "Service [desc=" + desc + "]";
-	}
+	
 }
